@@ -3,12 +3,17 @@ from .models import Account
 
 
 class RegistrationForm(forms.ModelForm):
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
+        'maxlength': 13,
+    }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Enter Password',
         'class': 'form-control',
+        'maxlength': 20,
     }))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'Confirm Password'
+        'placeholder': 'Confirm Password',
+        'maxlength': 20,
     }))
     class Meta:
         model = Account
